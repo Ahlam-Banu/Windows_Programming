@@ -1,0 +1,54 @@
+using System;
+public delegate float OperationDelegate(float a, float b);
+
+class Calculator
+{
+    public static float Add(float a, float b)
+    {
+        float c = a + b;
+        return c;
+    }
+
+    public static float Sub(float a, float b)
+    {
+        float c = a - b;
+        return c;
+    }
+
+    public static float Mul(float a, float b)
+    {
+        float c = a * b;
+        return c;
+    }
+
+    public static float Div(float a, float b)
+    {
+        float c = a / b;
+        return c;
+    }
+
+    public static float ApplyOperation(float a, float b, OperationDelegate operation)
+    {
+        return operation(a, b);
+    }
+}
+
+class Program
+    {
+        static void Main()
+        {
+        float num1 = 2.5f; //examples
+        float num2 = 5.1f;
+
+        float AddRes = Calculator.ApplyOperation(num1, num2, Calculator.Add);
+        float SubRes = Calculator.ApplyOperation(num1, num2, Calculator.Sub);
+        float MulRes = Calculator.ApplyOperation(num1, num2, Calculator.Mul);
+        float DivRes = Calculator.ApplyOperation(num1, num2, Calculator.Div);
+
+        //to display the result
+        Console.WriteLine($"Addition = {AddRes}");
+        Console.WriteLine($"Subtraction = {SubRes}");
+        Console.WriteLine($"Multiplication = {MulRes}");
+        Console.WriteLine($"Division = {DivRes}");
+        }
+    }
